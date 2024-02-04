@@ -1,7 +1,7 @@
 #ifndef DRIVER_MOTOR_H
 #define DRIVER_MOTOR_H
 
-#include <arduino.h>
+#include <Arduino.h>
 
 enum Direction
 {

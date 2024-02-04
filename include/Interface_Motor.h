@@ -1,7 +1,7 @@
 #ifndef INTERFACE_MOTOR_H
 #define INTERFACE_MOTOR_H
 
-#include <arduino.h>
+#include <Arduino.h>
 #include "Driver_Motor.h"
 
 class Interface_Motor

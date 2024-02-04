@@ -1,18 +1,36 @@
 #include <Arduino.h>
+#include "Interface_Ranging.h"
+#include "Driver_IMU.h"
 
-// put function declarations here:
-int myFunction(int, int);
+Interface_Ranging ranging;
+RangingResult ranging_result;
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+Driver_IMU imu_driver;
+
+const uint8_t SERIAL_BUFF_LEN = 256;
+byte serial_buff[SERIAL_BUFF_LEN];
+
+void setup()
+{
+    Serial.begin(115200);
+
+    ranging.init(10);
+
+    imu_driver.init();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+void loop()
+{
+    if (Serial.available() > 0)
+    {
+        Serial.readBytesUntil('\n', serial_buff, SERIAL_BUFF_LEN);
+        // Handle motor control
+    }
+    ranging.step(&ranging_result);
+    
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    // Serial.print(latest_angle);
+    // Serial.print(" ");
+
+    // Serial.println(latest_range);
 }
